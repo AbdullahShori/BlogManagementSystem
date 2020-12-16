@@ -1,6 +1,5 @@
 <?php
-     // make connection with database
-	$con = mysqli_connect("localhost","root","","login");
+$con = mysqli_connect("localhost","root","","login");
 		
 		if (mysqli_connect_errno())
 		  {

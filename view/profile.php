@@ -203,7 +203,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
                                 </div>
 
                                 <div class="ml-2">
@@ -219,6 +219,7 @@
                     </div>
 
                     <div class="card-body">
+                    <?php $comments = mysqli_query($db, "SELECT * FROM comments"); ?>
 
                                 <!--- fetch data from post table and display it-->
                         <?php
@@ -243,7 +244,10 @@
                                     echo "<img class='img', src='../controller/images/".$row['image']."' />";
                                     
                                     $postId = $row['id'];
-                                    include "../controller/like.php";
+                                    echo '<a  class="t"  href="../controller/like.php?postId='.$postId.'"><i class="far fa-thumbs-up"></i></a>';
+
+                                    echo '<a class="tt" href="../controller/indexx.php?postId='.$postId.'"><i class="far fa-comment"></i></a>';
+                                    
                                     }
                              
                                     

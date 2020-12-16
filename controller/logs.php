@@ -1,5 +1,6 @@
 <?php require("db.php");
-$result = mysqli_query($con, "SELECT * FROM comments ORDER BY id ASC");
+echo "<h2>" . $postId . "</h2></br></br>";
+$result = mysqli_query($con, "SELECT * FROM comments where  post_id=$postId ORDER BY id ASC");
 while($row = mysqli_fetch_assoc($result)){
 echo "<div class='comments_content'>";
 	echo "<h4><a href='delete.php?id=" . $row['id'] . "' class='fa fa-trash-o'style='font-size:18px;color:white; background-color:red;padding:5px'></a></h4>";

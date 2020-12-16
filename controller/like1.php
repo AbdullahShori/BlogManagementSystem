@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link href="reset.css" rel="stylesheet" type="text/css">
 <link href="style.css" rel="stylesheet" type="text/css">
-<title>Comment Box</title>
+<title>Like</title>
 <style>
 	.likes {
 		display: flex;

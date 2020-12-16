@@ -1,7 +1,13 @@
+<?php include "init.php"; ?>
+<?php if(!isset($_SESSION['id'])): ?>
+    <?php header("location:login.php"); ?>
+    <?php endif; ?>
+
+
+
 <?php  
 @$message = $_GET['message'];
 ?>
-
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,14 +23,18 @@
 	<div class="page_content" style="color:#567373;font-size: 24px;">Comment Box...</div>
     <div id="demo"></div>
     <div class="comment_input" style="border-radius:10px;box-shadow: 0px 0px 5px 2px #ddd;">
-        <form name="form"  id="form" method="POST">
-		<?php echo "<span>".$_SESSION['name']."</span>" ?></br>
+        
+		<?php echo "<span>".$_SESSION['name']."</span>" ?>
+		<form name="form"  id="form" method="POST" action="profile.php"></br>
             <textarea name="comments" placeholder="Leave Comments Here..." id="comment" style="width:635px; height:100px;"></textarea></br></br>
             <button type="submit" name="submit" id="submit" class="button" style="outline: none;border:none;">Post</button></br>
         </form>
     </div>
     <div id="comment_logs">
-	<?php require("logs.php");
+	<?php 
+	// $postId = $_GET['id'];
+	$postId = $_GET['postId'];
+	require("logs.php");
     	
     	echo "<span style='color:red;'>$message</span>";
 	?>	
@@ -34,12 +44,14 @@
 
 $(document).ready(function(){
   $('#form').submit(function() {
+	 
   	$.ajax({
   		type : 'POST',
   		url : "insert.php",
   		data : {
   			name :$('#name').val(),
-  			comments : $('#comment').val()
+			comments : $('#comment').val(),
+			post_id : '<?php echo $postId; ?>'
   		},
   		dataType : 'json',
   		success : function(result){
